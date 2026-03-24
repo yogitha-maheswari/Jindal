@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Jindal
 
-## Getting Started
+An AI-powered omnichannel platform designed to capture, engage, qualify, and convert high-value leads in real-time.
 
-First, run the development server:
+## 🎯 Problem
+Traditional sales systems delay responses, leading to lost high-value opportunities and inefficient lead handling.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 💡 Solution
+This platform acts as a 24/7 AI sales assistant that:
+- Instantly engages leads (<10 sec)
+- Qualifies leads based on business criteria
+- Communicates across multiple channels
+- Automates follow-ups and scheduling
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 💬 AI Chat Interface
+- Real-time conversational UI
+- Simulates intelligent responses
+- Lead qualification flow
 
-## Learn More
+### 📞 Voice AI (Demo UI)
+- Call simulation interface
+- Human-like interaction concept
 
-To learn more about Next.js, take a look at the following resources:
+### 📊 Dashboard
+- Lead metrics
+- Conversion rate
+- Response time analytics
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 📈 Analytics
+- Funnel visualization
+- Channel performance
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 📋 Lead Management
+- Lead scoring (High / Medium / Low)
+- Detailed lead insights
 
-## Deploy on Vercel
+### 🔁 Omni-Channel System
+- Unified communication across:
+  - Chat
+  - WhatsApp
+  - Email
+  - Voice
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠 Tech Stack
+
+- **Frontend:** Next.js (App Router)
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Charts:** Recharts
+
+---
+
+## 🎬 Demo Concept
+
+1. Lead enters website  
+2. AI responds instantly  
+3. AI qualifies lead  
+4. AI follows up via WhatsApp/Voice  
+5. Meeting is scheduled  
+6. Sales team takes over  
+
+---
+
+## 🚀 Future Scope
+
+- AI model integration (Gemini / OpenAI)
+- CRM integration (HubSpot / Zoho)
+- Real-time voice AI
+- LinkedIn outreach automation
+
+---
+
+## 📌 Author
+Yogitha Maheswari
