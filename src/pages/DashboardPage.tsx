@@ -4,9 +4,10 @@ import { StatCard } from "@/components/StatCard";
 import { GlassCard } from "@/components/GlassCard";
 import {
   AreaChart, Area, BarChart, Bar, LineChart, Line,
-  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  XAxis, YAxis, CartesianGrid, Tooltip,
 } from "recharts";
 import { motion } from "framer-motion";
+import { SafeResponsiveContainer } from "@/components/SafeResponsiveContainer";
 import {
   dashboardStats,
   weeklyEngagementData,
@@ -156,7 +157,7 @@ export default function DashboardPage() {
         <GlassCard delay={0.2} className="flex h-full min-h-105 flex-col rounded-[28px] border-border/60 bg-card/90 p-7">
           <h3 className="mb-7 text-base font-semibold tracking-[-0.02em] text-foreground">Lead Engagement Trend</h3>
           <div className="flex-1 min-h-75">
-            <ResponsiveContainer width="100%" height="100%">
+            <SafeResponsiveContainer>
               <AreaChart data={weeklyEngagementData} margin={{ top: 8, right: 20, left: 6, bottom: 14 }}>
                 <defs>
                   <linearGradient id="leadGrad" x1="0" y1="0" x2="0" y2="1">
@@ -184,7 +185,7 @@ export default function DashboardPage() {
                 <Area type="monotone" dataKey="qualified" name="Qualified" stroke={chartAccent} fill="url(#qualGrad)" strokeWidth={2} dot={false} />
                 <Area type="monotone" dataKey="converted" name="Converted" stroke={chartSuccess} fill="url(#convGrad)" strokeWidth={2} dot={false} />
               </AreaChart>
-            </ResponsiveContainer>
+            </SafeResponsiveContainer>
           </div>
           {/* Legend */}
           <div className="mt-4 flex flex-wrap gap-4 pl-6">
@@ -205,7 +206,7 @@ export default function DashboardPage() {
         <GlassCard delay={0.25} className="flex h-full min-h-105 flex-col rounded-[28px] border-border/60 bg-card/90 p-7">
           <h3 className="mb-7 text-base font-semibold tracking-[-0.02em] text-foreground">Monthly Pipeline Growth</h3>
           <div className="flex-1 min-h-75">
-            <ResponsiveContainer width="100%" height="100%">
+            <SafeResponsiveContainer>
               <LineChart data={monthlyPipelineData} margin={{ top: 8, right: 20, left: 6, bottom: 14 }}>
                 <defs>
                   <linearGradient id="pipelineGrad" x1="0" y1="0" x2="1" y2="0">
@@ -229,7 +230,7 @@ export default function DashboardPage() {
                   activeDot={{ r: 6, fill: chartAccent }}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </SafeResponsiveContainer>
           </div>
         </GlassCard>
       </div>
@@ -241,7 +242,7 @@ export default function DashboardPage() {
         <GlassCard delay={0.3} className="flex h-full min-h-105 flex-col rounded-[28px] border-border/60 bg-card/90 p-7">
           <h3 className="mb-7 text-base font-semibold tracking-[-0.02em] text-foreground">Leads by Source</h3>
           <div className="flex-1 min-h-75">
-            <ResponsiveContainer width="100%" height="100%">
+            <SafeResponsiveContainer>
               <BarChart data={leadSourceSummary} margin={{ top: 8, right: 20, left: 6, bottom: 14 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke={chartGridStroke} strokeOpacity={0.18} />
                 <XAxis dataKey="source" tick={{ fontSize: 11, fill: chartTickColor }} axisLine={{ stroke: chartGridStroke, strokeOpacity: 0.35 }} tickLine={false} height={28} />
@@ -254,7 +255,7 @@ export default function DashboardPage() {
                 />
                 <Bar dataKey="leads" radius={[8, 8, 0, 0]} fill={chartPrimary} />
               </BarChart>
-            </ResponsiveContainer>
+            </SafeResponsiveContainer>
           </div>
         </GlassCard>
 

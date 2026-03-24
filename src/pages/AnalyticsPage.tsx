@@ -1,8 +1,9 @@
 "use client";
 
-import { PieChart, Pie, Cell, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import { GlassCard } from "@/components/GlassCard";
 import { StatCard } from "@/components/StatCard";
+import { SafeResponsiveContainer } from "@/components/SafeResponsiveContainer";
 import {
   monthlyFunnelData,
   channelDistribution,
@@ -47,7 +48,7 @@ export default function AnalyticsPage() {
         <GlassCard delay={0.2} className="flex h-full min-h-105 flex-col rounded-[28px] border-border/60 bg-card/90 p-7">
           <h3 className="mb-7 text-base font-semibold tracking-[-0.02em] text-foreground">Lead Funnel Trend</h3>
           <div className="min-h-75 flex-1">
-            <ResponsiveContainer width="100%" height="100%">
+            <SafeResponsiveContainer>
               <AreaChart data={monthlyFunnelData} margin={{ top: 8, right: 20, left: 6, bottom: 14 }}>
                 <defs>
                   <linearGradient id="analyticsLeadGrad" x1="0" y1="0" x2="0" y2="1">
@@ -75,7 +76,7 @@ export default function AnalyticsPage() {
                 <Area type="monotone" dataKey="qualified" name="Qualified" stroke={chartAccent} fill="url(#analyticsQualifiedGrad)" strokeWidth={2} dot={false} />
                 <Area type="monotone" dataKey="converted" name="Converted" stroke={chartSuccess} fill="url(#analyticsConvertedGrad)" strokeWidth={2} dot={false} />
               </AreaChart>
-            </ResponsiveContainer>
+            </SafeResponsiveContainer>
           </div>
           <div className="mt-4 flex flex-wrap gap-4 pl-6">
             {[
@@ -94,7 +95,7 @@ export default function AnalyticsPage() {
         <GlassCard delay={0.25} className="flex h-full min-h-105 flex-col rounded-[28px] border-border/60 bg-card/90 p-7">
           <h3 className="mb-7 text-base font-semibold tracking-[-0.02em] text-foreground">Channel Distribution</h3>
           <div className="min-h-75 flex-1">
-            <ResponsiveContainer width="100%" height="100%">
+            <SafeResponsiveContainer>
               <PieChart>
                 <Pie
                   data={channelDistribution}
@@ -115,7 +116,7 @@ export default function AnalyticsPage() {
                   itemStyle={{ color: chartTooltipText }}
                 />
               </PieChart>
-            </ResponsiveContainer>
+            </SafeResponsiveContainer>
           </div>
           <div className="mt-2 space-y-3">
             {channelDistribution.map((channel) => (
