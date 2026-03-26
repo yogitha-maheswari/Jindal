@@ -39,16 +39,16 @@ export function AppSidebar({ open, onToggle }: AppSidebarProps) {
   const pathname = usePathname();
   const isSettingsActive = pathname === "/settings";
   const navItemBaseClass =
-    "group relative flex items-center overflow-hidden rounded-2xl border text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring/60";
+    "group relative flex items-center overflow-hidden rounded-xl text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring/60";
   const navItemHoverClass =
-    "border-border/30 text-muted-foreground hover:border-border/70 hover:bg-muted/30 hover:text-sidebar-foreground";
+    "text-muted-foreground hover:bg-muted/25 hover:text-sidebar-foreground";
   const navItemActiveClass =
-    "gradient-primary border-transparent text-primary-foreground shadow-lg shadow-primary/20";
+    "gradient-primary text-primary-foreground shadow-lg shadow-primary/20";
 
   return (
     <motion.aside
       initial={false}
-      animate={{ width: open ? 320 : 88 }}
+      animate={{ width: open ? 280 : 76 }}
       transition={{ duration: 0.3 }}
       className="flex flex-col h-screen sticky top-0 border-r border-border/50 bg-card/70 backdrop-blur-xl z-40"
     >
@@ -81,7 +81,7 @@ export function AppSidebar({ open, onToggle }: AppSidebarProps) {
             navItemHoverClass,
             open
               ? "h-11 w-11 shrink-0 justify-center rounded-xl p-2.5"
-              : "w-full justify-center px-0 py-4"
+              : "w-full justify-center px-0 py-3.5"
           )}
           aria-label={open ? "Collapse sidebar" : "Expand sidebar"}
         >
@@ -107,7 +107,7 @@ export function AppSidebar({ open, onToggle }: AppSidebarProps) {
               aria-current={isActive ? "page" : undefined}
               className={cn(
                 navItemBaseClass,
-                open ? "gap-3.5 px-4 py-4" : "justify-center px-0 py-4",
+                open ? "gap-3.5 px-3.5 py-3.5" : "justify-center px-0 py-3.5",
                 isActive ? navItemActiveClass : navItemHoverClass
               )}
             >
@@ -122,12 +122,6 @@ export function AppSidebar({ open, onToggle }: AppSidebarProps) {
 
               {open && (
                 <span className="relative z-10 truncate">{item.title}</span>
-              )}
-
-              {isActive && (
-                <>
-                  <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-primary-foreground/20" />
-                </>
               )}
             </Link>
           );
@@ -144,7 +138,7 @@ export function AppSidebar({ open, onToggle }: AppSidebarProps) {
           aria-current={isSettingsActive ? "page" : undefined}
           className={cn(
             navItemBaseClass,
-            "px-4 py-4",
+            "px-3.5 py-3.5",
             open ? "gap-3.5" : "justify-center",
             isSettingsActive ? navItemActiveClass : navItemHoverClass
           )}
@@ -158,22 +152,15 @@ export function AppSidebar({ open, onToggle }: AppSidebarProps) {
             )}
           />
           {open && <span className="relative z-10 truncate">Settings</span>}
-
-          {isSettingsActive && (
-            <>
-              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-primary-foreground/20" />
-            </>
-          )}
         </Link>
 
         {/* LOGOUT */}
         <button
           className={cn(
-            "group relative flex w-full items-center overflow-hidden rounded-2xl border border-destructive/20 px-4 py-4 text-sm font-medium text-destructive transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/40",
+            "group relative flex w-full items-center overflow-hidden rounded-xl px-3.5 py-3.5 text-sm font-medium text-destructive transition-all duration-200 hover:bg-destructive/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/40",
             open ? "gap-3.5" : "justify-center"
           )}
         >
-          <div className="absolute inset-0 rounded-2xl border border-destructive/25 bg-destructive/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
           <LogOut className="h-5 w-5 shrink-0 transition-transform duration-200 group-hover:-translate-x-0.5" />
           {open && <span className="relative z-10 truncate font-semibold">Logout</span>}
         </button>
