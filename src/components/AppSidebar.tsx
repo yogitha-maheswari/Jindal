@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard,
   Users,
@@ -37,6 +37,7 @@ type AppSidebarProps = {
 
 export function AppSidebar({ open, onToggle }: AppSidebarProps) {
   const pathname = usePathname();
+  const router = useRouter();
   const isSettingsActive = pathname === "/settings";
   const navItemBaseClass =
     "group relative flex items-center overflow-hidden rounded-xl text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring/60";
@@ -45,12 +46,17 @@ export function AppSidebar({ open, onToggle }: AppSidebarProps) {
   const navItemActiveClass =
     "gradient-primary text-primary-foreground shadow-lg shadow-primary/20";
 
+  const handleLogout = () => {
+    window.localStorage.removeItem("jindal-auth");
+    router.push("/login");
+  };
+
   return (
     <motion.aside
       initial={false}
       animate={{ width: open ? 280 : 76 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-col h-screen sticky top-0 border-r border-border/50 bg-card/70 backdrop-blur-xl z-40"
+      className="fixed inset-y-0 left-0 z-40 flex h-[calc(100dvh/0.9)] min-h-[calc(100dvh/0.9)] flex-col border-r border-border/50 bg-card/70 backdrop-blur-xl"
     >
       {/* TOP BAR (Logo + Collapse Icon) */}
       <div
@@ -95,7 +101,7 @@ export function AppSidebar({ open, onToggle }: AppSidebarProps) {
       </div>
 
       {/* NAV ITEMS */}
-      <div className="scrollbar-hidden flex-1 overflow-y-auto px-4 py-6">
+      <div className="scrollbar-hidden min-h-0 flex-1 overflow-y-auto px-4 py-6">
         <div className="space-y-3">
         {navItems.map((item) => {
           const isActive = pathname === item.path;
@@ -130,7 +136,8 @@ export function AppSidebar({ open, onToggle }: AppSidebarProps) {
       </div>
 
       {/* BOTTOM SECTION */}
-      <div className="border-t border-border/50 px-4 py-5">
+      <div className="mt-auto border-t border-border/50">
+        <div className="px-4 py-5">
         <div className="space-y-3">
         {/* SETTINGS */}
         <Link
@@ -156,6 +163,8 @@ export function AppSidebar({ open, onToggle }: AppSidebarProps) {
 
         {/* LOGOUT */}
         <button
+          type="button"
+          onClick={handleLogout}
           className={cn(
             "group relative flex w-full items-center overflow-hidden rounded-xl px-3.5 py-3.5 text-sm font-medium text-destructive transition-all duration-200 hover:bg-destructive/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/40",
             open ? "gap-3.5" : "justify-center"
@@ -164,6 +173,7 @@ export function AppSidebar({ open, onToggle }: AppSidebarProps) {
           <LogOut className="h-5 w-5 shrink-0 transition-transform duration-200 group-hover:-translate-x-0.5" />
           {open && <span className="relative z-10 truncate font-semibold">Logout</span>}
         </button>
+        </div>
         </div>
       </div>
     </motion.aside>

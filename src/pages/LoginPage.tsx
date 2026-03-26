@@ -19,7 +19,7 @@ export default function LoginPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        // TODO: replace with real auth
+        window.localStorage.setItem("jindal-auth", "true");
         router.push("/dashboard");
     };
 

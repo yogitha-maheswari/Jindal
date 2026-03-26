@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { AppSidebar } from "./AppSidebar";
 import { TopNavbar } from "./TopNavbar";
 
@@ -12,7 +13,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
     return (
-        <div className="flex min-h-screen w-full bg-background">
+        <div className="min-h-dvh w-full bg-background">
             {/* Sidebar */}
             <AppSidebar
                 open={sidebarOpen}
@@ -20,7 +21,12 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
             />
 
             {/* Content */}
-            <div className="flex-1 flex flex-col min-w-0">
+            <motion.div
+                initial={false}
+                animate={{ marginLeft: sidebarOpen ? 280 : 76 }}
+                transition={{ duration: 0.3 }}
+                className="flex min-h-dvh min-w-0 flex-col"
+            >
                 {/* Top Navbar */}
                 <TopNavbar
                     onMenuClick={() => setSidebarOpen(!sidebarOpen)}
@@ -28,10 +34,10 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                 />
 
                 {/* Page Content */}
-                <main className="flex-1 p-6 overflow-auto">
+                <main className="flex-1 overflow-auto p-6">
                     {children}
                 </main>
-            </div>
+            </motion.div>
         </div>
     );
 }
