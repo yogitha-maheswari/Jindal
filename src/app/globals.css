@@ -251,6 +251,10 @@
     overflow-x: hidden;
   }
 
+  .app-zoom-90 {
+    zoom: 0.9;
+  }
+
   ::selection {
     background-color: hsl(var(--accent) / 0.2);
     color: hsl(var(--accent));

@@ -18,7 +18,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body className="app-zoom-90">
         <QueryClientProvider client={queryClient}>
           <TooltipProvider>
             <Toaster />
